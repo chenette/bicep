@@ -1,0 +1,16 @@
+{
+  "analyzers": {
+    "core": {
+      "rules": {
+        "no-unused-params": {
+          "level": "warning"
+        }
+      }
+    }
+  },
+  "experimentalFeaturesEnabled": {
+    "userDefinedTypes": true,
+    "extensibility": true,
+    "resourceTypedParamsAndOutputs": true
+  }
+}

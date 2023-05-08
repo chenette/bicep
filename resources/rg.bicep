@@ -17,4 +17,4 @@ resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   location: location
 }
 
-output id string = rg.id
+output id resource = rg
