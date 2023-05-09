@@ -30,7 +30,7 @@ param properties object = {
 }
 
 // RESOURCE
-resource asp 'Microsoft.Web/serverfarms@2022-03-01' = {
+resource asp 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: name
   location: location
   sku: sku
@@ -38,4 +38,4 @@ resource asp 'Microsoft.Web/serverfarms@2022-03-01' = {
 }
 
 // OUTPUTS
-output resourceId string = asp.id
+output id string = asp.id

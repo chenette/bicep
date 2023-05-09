@@ -25,7 +25,7 @@ param properties object = {
 }
 
 // RESOURCE
-resource sql 'Microsoft.Sql/servers@2022-05-01-preview' = {
+resource sql 'Microsoft.Sql/servers@2022-08-01-preview' = {
   name: name
   location: location
   properties: properties

@@ -14,7 +14,7 @@ param sku object = {
 param kind string = 'StorageV2'
 
 // RESOURCE
-resource st 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource st 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: name
   location: location
   sku: sku

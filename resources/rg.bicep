@@ -1,5 +1,5 @@
 
-// =========== asp.bicep ===========
+// =========== rg.bicep ===========
 
 targetScope = 'subscription'
 

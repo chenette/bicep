@@ -16,7 +16,7 @@ param httpsOnly bool = true
 param isLinux bool = true
 
 // BASE PARAMETERS
-param name string = 'asp-${application}-${environment}-${location}-${padLeft(instance, 3, '0')}'
+param name string = 'app-${application}-${environment}-${location}-${padLeft(instance, 3, '0')}'
 param location string = resourceGroup().location
 param kind string = 'app,linux,container'
 param properties object = {
@@ -45,7 +45,7 @@ param properties object = {
 }
 
 // RESOURCE
-resource app 'Microsoft.Web/sites@2021-03-01' = {
+resource app 'Microsoft.Web/sites@2022-09-01' = {
   name: name
   location: location
   kind: kind

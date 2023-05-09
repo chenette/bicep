@@ -1,50 +1,26 @@
 // =========== cr.bicep ===========
 
-param name string
-param location string
-param sku string
+// USER-PROVIDED PARAMETERS
+param application string
+param environment string
+param instance string = '1'
 
-resource cr 'Microsoft.ContainerRegistry/registries@2022-02-01-preview' = {
-  name: name
-  location: location
-  sku: {
-    name: sku
-  }
-  properties: {
-    adminUserEnabled: true
-  }
+// BASE PARAMETERS
+param name string = 'cr${application}${environment}${padLeft(instance, 3, '0')}'
+param location string = resourceGroup().location
+param sku object = {
+  name: ''
+}
+param properties object = {
+  adminUserEnabled: true
 }
 
-resource kv 'Microsoft.KeyVault/vaults@2021-11-01-preview' = {
+resource cr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
   name: name
   location: location
-  properties: {
-    enabledForTemplateDeployment: true
-    tenantId: tenant().tenantId
-    accessPolicies: []
-    sku: {
-      name: 'standard'
-      family: 'A'
-    }
-  }
-  resource crUsername 'secrets' = {
-    name: 'crUsername'
-    properties: {
-      value: cr.listCredentials().username
-    }
-  }
-  resource crPassword1 'secrets' = {
-    name: 'crPassword1'
-    properties: {
-      value: cr.listCredentials().passwords[0].value
-    }
-  }
-  resource crPassword2 'secrets' = {
-    name: 'crPassword2'
-    properties: {
-      value: cr.listCredentials().passwords[1].value
-    }
-  }
+  sku: sku
+  properties: properties
 }
 
-// output resource resource = cr
+// For the future of having secure outputs
+// https://github.com/Azure/bicep/issues/2163

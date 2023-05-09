@@ -13,7 +13,7 @@ param tags object = {}
 ])
 param skuName string = 'standard'
 
-resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
+resource kv 'Microsoft.KeyVault/vaults@2023-02-01' = {
   name: name
   location: location
   tags: tags
@@ -33,3 +33,38 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
     tenantId: subscription().tenantId
   }
 }
+
+
+// resource kv 'Microsoft.KeyVault/vaults@2021-11-01-preview' = {
+//   name: name
+//   location: location
+//   properties: {
+//     enabledForTemplateDeployment: true
+//     tenantId: tenant().tenantId
+//     accessPolicies: []
+//     sku: {
+//       name: 'standard'
+//       family: 'A'
+//     }
+//   }
+//   resource crUsername 'secrets' = {
+//     name: 'crUsername'
+//     properties: {
+//       value: cr.listCredentials().username
+//     }
+//   }
+//   resource crPassword1 'secrets' = {
+//     name: 'crPassword1'
+//     properties: {
+//       value: cr.listCredentials().passwords[0].value
+//     }
+//   }
+//   resource crPassword2 'secrets' = {
+//     name: 'crPassword2'
+//     properties: {
+//       value: cr.listCredentials().passwords[1].value
+//     }
+//   }
+// }
+
+// output resource resource = cr
